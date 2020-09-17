@@ -53,7 +53,6 @@ public class WebSocket {
         }else{
             sendMessageAll(jsonTo.getString("msg"));
         }
-        sendMessageAll(message+"hello");
     }
 
     @OnError
@@ -66,7 +65,10 @@ public class WebSocket {
         //session.getAsyncRemote().sendText(message);  
         for (WebSocket item : clients.values()) {
             if (item.username.equals(To) ) {
-                item.session.getAsyncRemote().sendText(message);
+                //item.session.getAsyncRemote().sendText(message);
+                synchronized(item.session){
+                    item.session.getAsyncRemote().sendText(message);
+                }
             }
         }
     }

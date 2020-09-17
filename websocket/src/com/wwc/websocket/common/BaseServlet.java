@@ -30,7 +30,7 @@ public class BaseServlet extends HttpServlet {
             }
 
             //2.获取方法对象
-            Method method = this.getClass().getMethod(mName, HttpServletRequest.class,HttpServletRequest.class);
+            Method method = this.getClass().getMethod(mName, HttpServletRequest.class,HttpServletResponse.class);
 
             //3.让方法执行,接收返回值
             String path = (String) method.invoke(this, request,response);

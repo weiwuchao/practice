@@ -15,11 +15,12 @@ import java.io.IOException;
 
 @RestController
 //@WebServlet(urlPatterns = {"/webSocketByTomcat/serviceToClient"})
-@RequestMapping(value="/webSocketByTomcat/serviceToClient")
-public class WebSocketAction {
+//@RequestMapping(value="/webSocketByTomcat/serviceToClient")
+public class WebSocketAction extends BaseServlet {
 
     private WebSocket websocket = new WebSocket();
 
+    @RequestMapping(value="/webSocketByTomcat/serviceToClient")
     public void sendMsg(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("strat sendMsg....");
         JSONObject json = new JSONObject();
